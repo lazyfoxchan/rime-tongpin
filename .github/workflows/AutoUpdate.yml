@@ -1,0 +1,52 @@
+name: AutoUpdate (If no changes will fail)
+
+on:
+  # 毎年4月1日0時に実行(台湾時間)
+  schedule:
+    - cron: '0 16 31 3 *'
+  ## 手動実行用
+  workflow_dispatch:
+
+# ジョブ設定
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      # チェックアウト
+      - name: Checkout
+        uses: actions/checkout@v3
+      # Pythonインストール
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.11
+      # pip
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install opencc
+      # ConvertEssay.py実行
+      - name: Run ConvertEssay.py
+        run: python dict_tools/ConvertEssay.py
+      # ConvertOpenccEmoji.py実行
+      - name: Run ConvertOpenccEmoji.py
+        run: python dict_tools/ConvertOpenccEmoji.py
+      # ConvertOpenccTwPhase.py実行
+      - name: Run ConvertOpenccTwPhase.py
+        run: python dict_tools/ConvertOpenccTwPhase.py
+      # ファイル移動
+      - name: Move files
+        run: |
+          mv emoji_category_tongpin.txt opencc/
+          mv emoji_word_tongpin.txt opencc/
+          mv TWPhrasesIT_tongpin.txt opencc/
+          mv TWPhrasesName_tongpin.txt opencc/
+          mv TWPhrasesOther_tongpin.txt opencc/
+      # プッシュ(変更がなければ失敗)
+      - name: Push (If no changes will fail)
+        run: |
+          git config user.name  "actions-user"
+          git config user.email "action@github.com"
+          git add essay.txt tongpin.essayex.dict.yaml opencc/emoji_category_tongpin.txt opencc/emoji_word_tongpin.txt opencc/TWPhrasesIT_tongpin.txt opencc/TWPhrasesName_tongpin.txt opencc/TWPhrasesOther_tongpin.txt
+          git commit -m "Auto Update"
+          git push origin master

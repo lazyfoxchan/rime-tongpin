@@ -1,0 +1,22 @@
+{
+  "name": "Guoyu 2 Emoji 4 Tongyong Pinyin scheme",
+  "segmentation": {
+    "type": "mmseg",
+    "dict": {
+      "type": "text",
+      "file": "emoji_word_tongpin.txt"
+    }
+  },
+  "conversion_chain": [{
+    "dict": {
+      "type": "group",
+      "dicts": [{
+        "type": "text",
+        "file": "emoji_word_tongpin.txt"
+      }, {
+        "type": "text",
+        "file": "emoji_category_tongpin.txt"
+      }]
+    }
+  }]
+}

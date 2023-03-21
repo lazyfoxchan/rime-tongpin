@@ -1,0 +1,12 @@
+# Rime dictionary
+# encoding: utf-8
+
+---
+name: tongpin.essayex
+version: "1.0"
+sort: by_weight
+use_preset_vocabulary: false
+...
+
+一	yi2	135314
+不	bu2	590801
