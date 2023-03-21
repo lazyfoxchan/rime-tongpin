@@ -38,14 +38,14 @@ def remove_duplicates(arg_list):
         if key not in tmp_dict.keys():
             tmp_dict[key] = input_list_line[1]
             continue
-        if tmp_dict[key] < input_list_line[1]:
+        if int(tmp_dict[key]) < int(input_list_line[1]):
             tmp_dict[key] = input_list_line[1]
 
     for input_list_line in arg_list:
         key = input_list_line[0]
         if key not in tmp_dict.keys():
             continue
-        return_list.append([input_list_line[0], input_list_line[1]])
+        return_list.append([input_list_line[0], tmp_dict[key]])
         del tmp_dict[key]
 
     return return_list
