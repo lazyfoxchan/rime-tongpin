@@ -6,7 +6,7 @@ Tongyong Pinyin schema for Rime IME.
 * Display tones hint
 * Display Taiwanese Mandarin hints
 * Convert to emoji
-* Output 臺灣正體/日本新字体/简体
+* Output 臺灣正體/台灣民間字體/日本新字体/简体
 * Input tones using only 26 keys
   * `q` = `1st tone`
   * `x` = `2nd tone`
