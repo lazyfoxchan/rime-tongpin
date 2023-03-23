@@ -686,7 +686,7 @@ emoji_suggestion:
 
 variants_citizen:
   option_name: variants_citizen
-  opencc_config: gov2citizen_tongpin.json
+  opencc_config: opencctw2citizen_tongpin.json
 
 variants_shinjitai:
   option_name: variants_shinjitai
