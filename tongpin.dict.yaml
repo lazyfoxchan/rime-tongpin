@@ -5,7 +5,8 @@
 name: tongpin
 version: "1.0"
 sort: by_weight
-use_preset_vocabulary: true
+use_preset_vocabulary: false
+vocabulary: essay_tongpin
 import_tables:
   - tongpin.user
   - tongpin.essayex

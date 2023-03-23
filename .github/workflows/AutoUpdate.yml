@@ -47,6 +47,6 @@ jobs:
         run: |
           git config user.name  "actions-user"
           git config user.email "action@github.com"
-          git add essay.txt tongpin.essayex.dict.yaml opencc/emoji_category_tongpin.txt opencc/emoji_word_tongpin.txt opencc/TWPhrasesIT_tongpin.txt opencc/TWPhrasesName_tongpin.txt opencc/TWPhrasesOther_tongpin.txt
+          git add essay_tongpin.txt tongpin.essayex.dict.yaml opencc/emoji_category_tongpin.txt opencc/emoji_word_tongpin.txt opencc/TWPhrasesIT_tongpin.txt opencc/TWPhrasesName_tongpin.txt opencc/TWPhrasesOther_tongpin.txt
           git commit -m "Auto Update"
           git push origin master

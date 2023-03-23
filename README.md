@@ -52,21 +52,21 @@ $ python ConvertDict.py ./dict_revised_2015_XXXXXXXX.xlsx ./dict_concised_2014_X
 1. Install [Rime IME](https://rime.im/download/)
 2. Copy the following files into the Rime IME user directory in your environment:  
     * opencc/*
+    * essay_tongpin.txt
     * tongpin.schema.yaml
     * tongpin.dict.yaml
     * tongpin.user.dict.yaml
+    * tongpin.essayex.dict.yaml
     * tongpin.revised.dict.yaml (you converted)
     * tongpin.concised.dict.yaml (you converted)
     * tongpin.idioms.dict.yaml (you converted)
-    * essay.txt  
-  Note: essay.txt may affect the behavior of other schemas.
 3. After copying the files, need to redeploy.
 
 ## License
 Author: lazy fox chan  
 License: [GNU Lesser General Public License v3.0](https://github.com/lazyfoxchan/rime-tongpin/blob/master/LICENSE)
 
-`essay.txt` was converted from [rime-essay](https://github.com/rime/rime-essay)  
+`essay_tongpin.txt` was converted from [rime-essay](https://github.com/rime/rime-essay)  
 License: [GNU Lesser General Public License v3.0](https://github.com/rime/rime-essay/blob/master/LICENSE)
 
 `emoji_category_tongpin.txt` and `emoji_word_tongpin.txt` was converted from [rime-emoji](https://github.com/rime/rime-emoji)  

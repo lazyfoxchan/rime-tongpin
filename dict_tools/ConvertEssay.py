@@ -7,7 +7,7 @@ import opencc
 
 ESSAY_URL = "https://github.com/rime/rime-essay/raw/master/essay.txt"
 ESSAY_ORIG_FILE_NAME = "essay.txt.orig"
-ESSAY_FILE_NAME = "essay.txt"
+ESSAY_FILE_NAME = "essay_tongpin.txt"
 ESSAY_EX_FILE_NAME = "tongpin.essayex.dict.yaml"
 ESSAY_EX_FILE_HEADER = \
 """# Rime dictionary
