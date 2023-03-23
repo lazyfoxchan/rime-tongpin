@@ -30,9 +30,9 @@ switches:
   - name: emoji_suggestion
     states: [ 🈚️繪文字, 🈶️繪文字 ]
     reset: 1
-  - options: [ noop, variants_citizen, variants_shinjitai, simplification ]
-    states: [ 臺灣正體, 台灣民間字體, 日本新字体, 简体 ]
-    reset: 1
+  - options: [ variants_citizen, variants_shinjitai, simplification ]
+    states: [ 台灣民間漢字, 日本新字体, 简体 ]
+    reset: 0
 
 engine:
   processors:

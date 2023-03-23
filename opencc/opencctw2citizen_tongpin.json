@@ -1,0 +1,22 @@
+{
+  "name": "OpenCC Taiwanese variants 2 Taiwanese citizen variants 4 Tongyong Pinyin scheme",
+  "segmentation": {
+    "type": "mmseg",
+    "dict": {
+      "type": "text",
+      "file": "CitizenPhrases_tongpin.txt"
+    }
+  },
+  "conversion_chain": [{
+    "dict": {
+      "type": "group",
+      "dicts": [{
+        "type": "text",
+        "file": "CitizenPhrases_tongpin.txt"
+      }, {
+        "type": "text",
+        "file": "CitizenVariants_tongpin.txt"
+      }]
+    }
+  }]
+}
