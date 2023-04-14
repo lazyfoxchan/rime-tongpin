@@ -2,12 +2,17 @@
 # Author: lazy fox chan
 # Convert dict from essay project repo
 import urllib.request
+import zipfile
 import opencc
+import re
 
 
 ESSAY_URL = "https://github.com/rime/rime-essay/raw/master/essay.txt"
 ESSAY_ORIG_FILE_NAME = "essay.txt.orig"
 ESSAY_FILE_NAME = "essay_tongpin.txt"
+CEDICT_URL = "https://www.mdbg.net/chinese/export/cedict/cedict_1_0_ts_utf-8_mdbg.zip"
+CEDICT_ZIP_FILE_NAME = "cedict_1_0_ts_utf-8_mdbg.zip"
+CEDICT_FILE_NAME = "cedict_ts.u8"
 ESSAY_EX_FILE_NAME = "tongpin.essayex.dict.yaml"
 ESSAY_EX_FILE_HEADER = \
 """# Rime dictionary
@@ -21,12 +26,6 @@ use_preset_vocabulary: false
 ...
 
 """
-
-
-# Download
-print("Start download: " + ESSAY_URL)
-urllib.request.urlretrieve(ESSAY_URL, ESSAY_ORIG_FILE_NAME)
-print("Download complete: " + ESSAY_ORIG_FILE_NAME)
 
 
 def remove_duplicates(arg_list):
@@ -51,7 +50,18 @@ def remove_duplicates(arg_list):
     return return_list
 
 
-# Load file
+# Download
+print("Start download: " + ESSAY_URL)
+urllib.request.urlretrieve(ESSAY_URL, ESSAY_ORIG_FILE_NAME)
+print("Download complete: " + ESSAY_ORIG_FILE_NAME)
+print("Start download: " + CEDICT_URL)
+urllib.request.urlretrieve(CEDICT_URL, CEDICT_ZIP_FILE_NAME)
+print("Download complete: " + CEDICT_ZIP_FILE_NAME)
+with zipfile.ZipFile(CEDICT_ZIP_FILE_NAME) as zf:
+    zf.extract(CEDICT_FILE_NAME)
+
+
+# Load essay file
 essay_input_file = open(ESSAY_ORIG_FILE_NAME, "r", encoding="utf-8")
 essay_tmp = essay_input_file.read()
 essay_input_file.close()
@@ -73,13 +83,31 @@ for line in essay_tmp.splitlines():
         before_list[word] = None
 
 
-# set the score of OpenCC word to 0
+# Set the score of OpenCC word to 0
 essay_list = []
 for line in essay_tmp2_list:
     if line[0] in before_list:
         essay_list.append([line[0], "0"])
     else:
         essay_list.append([line[0], line[1]])
+
+
+# Load CEDICT file and marge list
+cedict_list = []
+cedict_input_file = open(CEDICT_FILE_NAME, "r", encoding="utf-8")
+for line in cedict_input_file:
+    word = line.split(" ")[0]
+    if len(word) != 1 and not(bool(re.search("([0-9]|[a-zA-Z]|#|!)", word))):
+        if "，" in word:
+            for divided_word in word.split("，"):
+                cedict_list.append([divided_word, "0"])
+        elif "·" in word:
+            for divided_word in word.split("·"):
+                cedict_list.append([divided_word, "0"])
+        else:
+            cedict_list.append([word, "0"])
+cedict_input_file.close()
+essay_list = essay_list + cedict_list
 
 
 # Remove duplicates (keep maximum score)
