@@ -68,6 +68,12 @@ speller:
   algebra:
     - abbrev/^([a-z]).+$/$1/
     - derive/^([a-z]+)[0-5]$/$1/
+    - derive/^wun/wen/
+    - derive/^shih/shi/
+    - derive/^jhih/jhi/
+    - derive/^rih/ri/
+    - derive/^j/z/
+    - derive/^z/j/
     - xform/1/q/
     - xform/2/x/
     - xform/3/qq/
